@@ -3,11 +3,12 @@ using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace DataAccess.Concrete.InMemory
 {
-    public class InMemoryProductDal : IProductDal<Car>
+    public class InMemoryProductDal : ICarDal
     {
         List<Car> _products;
         public InMemoryProductDal()
@@ -27,8 +28,13 @@ namespace DataAccess.Concrete.InMemory
 
         public void Delete(Car product)
         {
-            Car carRemove = _products.SingleOrDefault(c => c.Id == product.Id);
+            Car carRemove = _products.SingleOrDefault(c => c.CarId == product.CarId);
             _products.Remove(carRemove);
+        }
+
+        public Car Get(Expression<Func<Car, bool>> filter)
+        {
+            throw new NotImplementedException();
         }
 
         public List<Car> GetAll()
@@ -36,14 +42,19 @@ namespace DataAccess.Concrete.InMemory
             return _products;
         }
 
+        public List<Car> GetAll(Expression<Func<Car, bool>> filter = null)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Car> GetById(Car product)
         {
-            return _products.Where(c => c.Id == product.Id).ToList();  
+            return _products.Where(c => c.CarId == product.CarId).ToList();  
         }
 
         public void Update(Car product)
         {
-            Car carRemove = _products.SingleOrDefault(c => c.Id == product.Id);
+            Car carRemove = _products.SingleOrDefault(c => c.CarId == product.CarId);
             carRemove.Description = product.Description;
             carRemove.DailyPrice = product.DailyPrice;
             carRemove.ColorId = product.ColorId;
