@@ -1,19 +1,22 @@
-﻿using System;
+﻿using Entities.Concrete;
+using Entities.DTOs;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Business.Abstract
 {
-    public interface ICarService<T>
+    public interface ICarService
     {
-        List<T> GetById(int id);
-        List<T> GetBrandId(int id);
-        List<T> GetColorId(int id);
-        List<T> GetModelYear(decimal minyear,decimal maxyear);
-        List<T> GetDailyPrice(decimal min,decimal max);
-        List<T> GetAll();
-        void Add(T entity);
-        void Update(T entity);
-        void Delete(T entity);
+        List<Car> GetById(int id);
+        List<Car> GetBrandId(int id);
+        List<Car> GetColorId(int id);
+        List<Car> GetModelYear(decimal minyear,decimal maxyear);
+        List<Car> GetDailyPrice(decimal min,decimal max);
+        List<Car> GetAll();
+        List<CarDetailDto> GetCarDetails();
+        void Add(Car entity);
+        void Update(Car entity);
+        void Delete(Car entity);
     }
 }
