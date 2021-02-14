@@ -64,9 +64,10 @@ namespace ConsoleUI
         {
             CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
 
-            customerManager.Add(new Customer { UserId = 1, CompanyName = "Epic Games" });
-            customerManager.Add(new Customer { UserId = 1, CompanyName = "Steam" });
-            customerManager.Add(new Customer { UserId = 9, CompanyName = "Valve" });
+            customerManager.Add(new Customer { UserId = 1, CompanyName = "Tesla" });
+            customerManager.Add(new Customer {CompanyName = "Epic Games" });
+            customerManager.Add(new Customer {CompanyName = "Steam" });
+            customerManager.Add(new Customer {CompanyName = "Valve" });
 
             var result = customerManager.GetAll();
             if (result.Success)
