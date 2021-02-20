@@ -18,4 +18,4 @@ Web API destekli çalışıyor
 
 Do not forget to mention my shortcomings and star if you like it :)
 ---------------------------
-Eksikliklerimden bahsetmeyi unutma ve beğendiyseniz yıldız atmayı unutmayın :)
+Eksiklerimden bahsetmeyi unutma ve beğendiyseniz yıldız atmayı unutmayın :)
