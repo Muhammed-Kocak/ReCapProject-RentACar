@@ -16,6 +16,6 @@ Web API destekli çalışıyor
 'Validation' kontroller için 'Fluent Validation' kullanımda.
 
 
-Do not forget to mention my shortcomings and star if you like it :)
+Don't forget to mention my mistakes and give stars if you like it :)
 ---------------------------
-Eksiklerimden bahsetmeyi unutma ve beğendiyseniz yıldız atmayı unutmayın :)
+Hatalarımdan bahsetmeyi ve beğenirsen yıldız vermeyi unutma :)
