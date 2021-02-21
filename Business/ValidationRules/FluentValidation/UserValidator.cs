@@ -1,4 +1,5 @@
-﻿using DataAccess.Abstract;
+﻿using Business.Constants;
+using DataAccess.Abstract;
 using Entities.Concrete;
 using FluentValidation;
 using System;
@@ -18,17 +19,17 @@ namespace Business.ValidationRules.FluentValidation
 
         public UserValidator()
         {
-            RuleFor(u => u.FirstName).NotEmpty();
-            RuleFor(u => u.FirstName).MinimumLength(2);
-            RuleFor(u => u.LastName).NotEmpty();
-            RuleFor(u => u.LastName).MinimumLength(2);
-            RuleFor(u => u.EMail).NotEmpty();
-            RuleFor(u => u.EMail).MinimumLength(10);
-            RuleFor(u => u.EMail).EmailAddress();
-            RuleFor(u => u.EMail).Must(IsEmailUnique).WithMessage("Aynı E-Mail'den Mevcut. LÜTFEN GİRİŞ YAPINIZ!");
-            RuleFor(u => u.Password).NotEmpty();
-            RuleFor(u => u.Password).MinimumLength(6);
-            RuleFor(u => u.Password).MaximumLength(30);
+            RuleFor(u => u.FirstName).NotEmpty().WithMessage(Messages.NotEmpty);
+            RuleFor(u => u.FirstName).MinimumLength(2).WithMessage(Messages.MinimumLenght);
+            RuleFor(u => u.LastName).NotEmpty().WithMessage(Messages.NotEmpty);
+            RuleFor(u => u.LastName).MinimumLength(2).WithMessage(Messages.MinimumLenght);
+            RuleFor(u => u.EMail).NotEmpty().WithMessage(Messages.NotEmpty);
+            RuleFor(u => u.EMail).MinimumLength(10).WithMessage(Messages.MinimumLenght);
+            RuleFor(u => u.EMail).EmailAddress().WithMessage(Messages.EmailCheck);
+            RuleFor(u => u.EMail).Must(IsEmailUnique).WithMessage(Messages.IsEmailUnique);
+            RuleFor(u => u.Password).NotEmpty().WithMessage(Messages.NotEmpty);
+            RuleFor(u => u.Password).MinimumLength(6).WithMessage(Messages.MinimumLenght);
+            RuleFor(u => u.Password).MaximumLength(30).WithMessage(Messages.MaximumLenght);
 
         }
 
