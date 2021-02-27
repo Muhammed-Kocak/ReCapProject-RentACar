@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entities.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -12,11 +13,9 @@ namespace Business.Constants
         public static string EntityUpdated = "Güncellendi!";
         public static string EntityAdded = "Eklendi!";
         #endregion
-
         #region System
         public static string Maintenancetime = "Sistemimiz Bakımda!";
         #endregion
-
         #region Rules
         //General
         public static string Empty = "Boş Geçilebilir";
@@ -38,8 +37,24 @@ namespace Business.Constants
         //UserValidator
         public static string IsEmailUnique = "Aynı E-Mail'den Mevcut. LÜTFEN GİRİŞ YAPINIZ!";
         public static string EmailCheck = "Standart E-Mail Yazımında hata var lütfen kontrol ediniz.";
+
+
         //BrandValidator
 
+
+
+        #endregion
+        #region General
+
+        #endregion
+        #region CarImages
+        public static string CarImageAddLimit = "Bir arabanın en fazla 5 resmini yükleyebilirsin";
+
+        public static string CarImageAdded = "Resim başarıyla yüklendi";
+
+        public static string CarImageDeleted = "Resim silindi";
+
+        public static string GetErrorCarDetails = "Araç bilgisi bulunamadı";
         #endregion
     }
 }
