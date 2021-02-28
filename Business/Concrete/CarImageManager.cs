@@ -38,7 +38,7 @@ namespace Business.Concrete
         public IResult Delete(CarImage entity)
         {
             var imageData = _carImageDal.Get(p => p.CarId == entity.CarId);
-            File.Delete(imageData.ImagePath);
+            File.Delete(@"wwwroot\images\" + imageData.ImagePath);
             _carImageDal.Delete(imageData);
             return new SuccessResult(Messages.CarImageDeleted);
         }

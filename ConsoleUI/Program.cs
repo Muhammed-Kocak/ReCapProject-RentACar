@@ -1,4 +1,5 @@
 ﻿using Business.Concrete;
+using Core.Entities.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
@@ -44,7 +45,7 @@ namespace ConsoleUI
 
             Console.WriteLine("--Update--");
 
-            rentalManager.Update(new Rental { RentalId = 4,CarId =2,CustomerId =1,RentDate = new DateTime(2020,06,23), ReturnDate = new DateTime(2020, 07, 01) });
+            rentalManager.Update(new Rental { RentalId = 4, CarId = 2, CustomerId = 1, RentDate = new DateTime(2020, 06, 23), ReturnDate = new DateTime(2020, 07, 01) });
 
             var result2 = rentalManager.GetAll();
             if (result2.Success)
@@ -65,9 +66,9 @@ namespace ConsoleUI
             CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
 
             customerManager.Add(new Customer { UserId = 1, CompanyName = "Tesla" });
-            customerManager.Add(new Customer {CompanyName = "Epic Games" });
-            customerManager.Add(new Customer {CompanyName = "Steam" });
-            customerManager.Add(new Customer {CompanyName = "Valve" });
+            customerManager.Add(new Customer { CompanyName = "Epic Games" });
+            customerManager.Add(new Customer { CompanyName = "Steam" });
+            customerManager.Add(new Customer { CompanyName = "Valve" });
 
             var result = customerManager.GetAll();
             if (result.Success)
@@ -93,17 +94,17 @@ namespace ConsoleUI
         private static void UserManagerTest()
         {
             UserManager userManager = new UserManager(new EfUserDal());
-            userManager.Add(new User { FirstName = "Emre", LastName = "Altuğ", EMail = "emre.altug@hotmail.com", Password = "1234altug56789" });
-            userManager.Add(new User { FirstName = "Gülhan", LastName = "Altundaşar", EMail = "gülhan.altundaşar26@hotmail.com", Password = "1234altun56789" });
-            userManager.Add(new User { FirstName = "Menekşe", LastName = "Çiçek", EMail = "menekse.cicek@hotmail.com", Password = "1234cicek56789" });
-            userManager.Add(new User { FirstName = "Aşkın", LastName = "Sever", EMail = "askin.sever@hotmail.com", Password = "1234sever56789" });
+            userManager.Add(new User { FirstName = "Emre", LastName = "Altuğ", Email = "emre.altug@hotmail.com" });
+            userManager.Add(new User { FirstName = "Gülhan", LastName = "Altundaşar", Email = "gülhan.altundaşar26@hotmail.com" });
+            userManager.Add(new User { FirstName = "Menekşe", LastName = "Çiçek", Email = "menekse.cicek@hotmail.com  }" });
+            userManager.Add(new User { FirstName = "Aşkın", LastName = "Sever", Email = "askin.sever@hotmail.com" });
 
             var result = userManager.GetAll();
             if (result.Success)
             {
                 foreach (var user in result.Data)
                 {
-                    Console.WriteLine($@"{user.FirstName} \ {user.LastName} \ {user.EMail}");
+                    Console.WriteLine($@"{user.FirstName} \ {user.LastName} \ {user.Email}");
                 }
             }
 
@@ -115,7 +116,7 @@ namespace ConsoleUI
             {
                 foreach (var user in result2.Data)
                 {
-                    Console.WriteLine($@"{user.FirstName} \ {user.LastName} \ {user.EMail}");
+                    Console.WriteLine($@"{user.FirstName} \ {user.LastName} \ {user.Email}");
                 }
             }
         }
