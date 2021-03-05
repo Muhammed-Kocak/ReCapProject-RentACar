@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspect.Autofac;
 using Business.Constants;
+using Core.Aspect.Autofac.Caching;
 using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
@@ -12,6 +14,7 @@ using System.Text;
 
 namespace Business.Concrete
 {
+    [SecuredOperation("Admin,Moderator")]
     public class CarImageManager : ICarImageService
     {
         ICarImagesDal _carImageDal;
@@ -22,7 +25,8 @@ namespace Business.Concrete
             _carImageDal = carImagesDal;
             _carService = carService;
         }
-
+        [SecuredOperation("Car.add")]
+        [CacheRemoveAspect("get")]
         public IResult Add(CarImage entity)
         {
             var result = BusinessRules.Run(CheckCarImageCount());
@@ -34,7 +38,8 @@ namespace Business.Concrete
             _carImageDal.Add(entity);
             return new SuccessResult(Messages.CarImageAdded);
         }
-
+        [SecuredOperation("Car.delete")]
+        [CacheRemoveAspect("get")]
         public IResult Delete(CarImage entity)
         {
             var imageData = _carImageDal.Get(p => p.CarId == entity.CarId);
@@ -42,12 +47,12 @@ namespace Business.Concrete
             _carImageDal.Delete(imageData);
             return new SuccessResult(Messages.CarImageDeleted);
         }
-
+        [CacheAspect]
         public IDataResult<List<CarImage>> GetAll()
         {
             return new SuccessDataResult<List<CarImage>>(_carImageDal.GetAll());
         }
-
+        [CacheAspect]
         public IDataResult<List<CarImage>> GetById(int id)
         {
             var result = BusinessRules.Run(CheckIfCarId(id));
@@ -62,14 +67,14 @@ namespace Business.Concrete
             }
             return new SuccessDataResult<List<CarImage>>(getAllbyCarIdResult);
         }
-
+        [SecuredOperation("Car.update")]
+        [CacheRemoveAspect("get")]
         public IResult Update(CarImage entity)
         {
             entity.Date = DateTime.Now;
             _carImageDal.Update(entity);
             return new SuccessResult(Messages.EntityUpdated);
         }
-
         private IResult CheckCarImageCount()
         {
             if (_carImageDal.GetAll().Count > 4)

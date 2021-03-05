@@ -18,7 +18,7 @@ namespace ConsoleUI
             //CarDetailTest();
             //UserManagerTest();
             //CustomerManagerTest();
-            //RentalManagerTest();
+            RentalManagerTest();
         }
 
         private static void RentalManagerTest()
@@ -26,7 +26,7 @@ namespace ConsoleUI
             CarDetailDto carDetailDto = new CarDetailDto();
             RentalManager rentalManager = new RentalManager(new EfRentalDal());
 
-            //rentalManager.Add(new Rental { CarId = 2, CustomerId = 1, RentDate = new DateTime(2020, 06, 23) });
+            rentalManager.Add(new Rental { CarId = 2, CustomerId = 1, RentDate = new DateTime(2020, 06, 23) });
 
             //rentalManager.Add(new Rental { CarId = 3, CustomerId = 3, RentDate = new DateTime(2021, 11, 26) });
 

@@ -1,6 +1,8 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspect.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspect.Autofac.Caching;
 using Core.Aspect.Autofac.Validation;
 using Core.Utilities;
 using Core.Utilities.Results;
@@ -13,6 +15,7 @@ using System.Text;
 
 namespace Business.Concrete
 {
+    [SecuredOperation("Admin,Moderator")]
     public class CarManager : ICarService
     {
         ICarDal _carDal;
@@ -20,6 +23,8 @@ namespace Business.Concrete
         {
             _carDal = carDal;
         }
+        [SecuredOperation("Car.add")]
+        [CacheRemoveAspect("get")]
         [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car entity)
         {
@@ -33,44 +38,56 @@ namespace Business.Concrete
                 return new ErrorResult(Messages.WrongPriceEntry);
             }
         }
+        [SecuredOperation("Car.delete")]
+        [CacheRemoveAspect("get")]
         public IResult Delete(Car entity)
         {
             _carDal.Delete(entity);
             return new SuccessResult(Messages.EntityDeleted);
         }
+        [CacheAspect]
         public IDataResult<List<Car>> GetAll()
         {
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(), Messages.EntityListed);
         }
+        [CacheAspect]
         public IDataResult<Car> GetBrandId(int id)
         {
             return new SuccessDataResult<Car>(_carDal.Get(c => c.BrandId == id), Messages.EntityListed);
         }
+        [CacheAspect]
         public IDataResult<Car> GetById(int id)
         {
             return new SuccessDataResult<Car>(_carDal.Get(c => c.CarId == id), Messages.EntityListed);
         }
+        [CacheAspect]
         public IDataResult<List<CarDetailDto>> GetCarDetails()
         {
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(), Messages.EntityListed);
         }
+        [CacheAspect]
         IDataResult<List<Car>> ICarService.GetCarDetails()
         {
             throw new NotImplementedException();
         }
+        [CacheAspect]
         public IDataResult<Car> GetColorId(int id)
         {
             return new SuccessDataResult<Car>(_carDal.Get(c => c.ColorId == id), Messages.EntityListed);
         }
+        [CacheAspect]
         public IDataResult<List<Car>> GetDailyPrice(decimal min, decimal max)
         {
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => min <= c.DailyPrice && c.DailyPrice <= max), Messages.EntityListed);
         }
+        [CacheAspect]
         public IDataResult<List<Car>> GetModelYear(decimal minyear, decimal maxyear)
         {
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => minyear <= c.ModelYear && c.ModelYear <= maxyear), Messages.EntityListed);
         }
+        [SecuredOperation("Car.update")]
         [ValidationAspect(typeof(CarValidator))]
+        [CacheRemoveAspect("get")]
         public IResult Update(Car entity)
         {
             _carDal.Update(entity);
