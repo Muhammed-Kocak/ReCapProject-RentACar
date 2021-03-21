@@ -3,8 +3,10 @@ using Business.BusinessAspect.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspect.Autofac.Caching;
+using Core.Aspect.Autofac.Logging;
 using Core.Aspect.Autofac.Performance;
 using Core.Aspect.Autofac.Validation;
+using Core.CrossCuttingConcerns.Logging.Log4Net.Loggers;
 using Core.Utilities;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
@@ -16,7 +18,7 @@ using System.Text;
 namespace Business.Concrete
 {
 
-    [SecuredOperation("Admin,Moderator")]
+    //[SecuredOperation("Admin,Moderator")]
     public class ColorManager : IColorService
     {
         IColorDal _colorDal;
@@ -24,8 +26,8 @@ namespace Business.Concrete
         {
             _colorDal = colorDal;
         }
-
-        [SecuredOperation("Color.add")]
+        [LogAspect(typeof(FileLogger))]
+        //[SecuredOperation("Color.add")]
         [ValidationAspect(typeof(ColorValidator))]
         [CacheRemoveAspect("get")]
         public IResult Add(Color entity)
@@ -33,7 +35,8 @@ namespace Business.Concrete
             _colorDal.Add(entity);
             return new SuccessResult(Messages.EntityAdded);
         }
-        [SecuredOperation("Color.delete")]
+        [LogAspect(typeof(DatabaseLogger))]
+        //[SecuredOperation("Color.delete")]
         [CacheRemoveAspect("get")]
         public IResult Delete(Color entity)
         {

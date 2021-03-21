@@ -9,6 +9,7 @@ using Core.Utilities;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ using System.Text;
 
 namespace Business.Concrete
 {
-    [SecuredOperation("Admin,Moderator,User")]
+    //[SecuredOperation("Admin,Moderator,User")]
     public class RentalManager : IRentalService
     {
         IRentalDal _rentalDal;
@@ -29,7 +30,7 @@ namespace Business.Concrete
         [SecuredOperation("Rental.add")]
         [CacheRemoveAspect("get")]
         [ValidationAspect(typeof(RentalValidator))]
-        public Result Add(Rental rental)
+        public IResult Add(Rental rental)
         {
             _rentalDal.Add(rental);
             return new SuccessResult(Messages.EntityAdded);
@@ -37,28 +38,33 @@ namespace Business.Concrete
 
         [SecuredOperation("Rental.delete")]
         [CacheRemoveAspect("get")]
-        public Result Delete(Rental rental)
+        public IResult Delete(Rental rental)
         {
             _rentalDal.Delete(rental);
             return new SuccessResult(Messages.EntityDeleted);
         }
         [PerformanceAspect(10)]
         [CacheAspect]
-        public DataResult<List<Rental>> GetAll()
+        public IDataResult<List<Rental>> GetAll()
         {
             return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll());
         }
         [PerformanceAspect(10)]
         [CacheAspect]
-        public DataResult<Rental> GetById(int id)
+        public IDataResult<Rental> GetById(int id)
         {
             return new SuccessDataResult<Rental>(_rentalDal.Get(r => r.RentalId == id));
         }
-
+        [PerformanceAspect(10)]
+        [CacheAspect]
+        public IDataResult<List<RentalDetailDto>> GetRentalDetailsDto()
+        {
+            return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetRentalDetails());
+        }
         [SecuredOperation("Rental.update")]
         [CacheRemoveAspect("get")]
         [ValidationAspect(typeof(RentalValidator))]
-        public Result Update(Rental rental)
+        public IResult Update(Rental rental)
         {
             _rentalDal.Update(rental);
             return new SuccessResult(Messages.EntityUpdated);

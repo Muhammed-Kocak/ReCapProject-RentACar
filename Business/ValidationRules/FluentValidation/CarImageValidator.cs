@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Business.ValidationRules.FluentValidation
 {
-    public class CarImageValidator<T> : AbstractValidator<CarImagesDto>
+    public class CarImageValidator : AbstractValidator<CarImagesDto>
     {
         public CarImageValidator()
         {
@@ -22,7 +22,7 @@ namespace Business.ValidationRules.FluentValidation
         }
     }
 
-    public class AddCarImageValidator : CarImageValidator<CarImagesDto>
+    public class AddCarImageValidator : CarImageValidator
     {
         public AddCarImageValidator()
         {
@@ -30,7 +30,7 @@ namespace Business.ValidationRules.FluentValidation
         }
     }
 
-    public class UpdateCarImageValidator : CarImageValidator<CarImagesDto>
+    public class UpdateCarImageValidator : CarImageValidator
     {
         public UpdateCarImageValidator()
         {

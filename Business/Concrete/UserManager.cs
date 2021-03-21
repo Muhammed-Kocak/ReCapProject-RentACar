@@ -15,7 +15,6 @@ using System.Text;
 
 namespace Business.Concrete
 {
-    [SecuredOperation("Admin,Moderator")]
     public class UserManager : IUserService
     {
         IUserDal _userDal;
@@ -24,35 +23,32 @@ namespace Business.Concrete
         {
             _userDal = userDal;
         }
-        [SecuredOperation("User.add")]
         [CacheRemoveAspect("get")]
         [ValidationAspect(typeof(UserValidator))]
-        public Result Add(User user)
+        public IResult Add(User user)
         {
             _userDal.Add(user);
             return new SuccessResult(Messages.EntityAdded);
         }
-        [SecuredOperation("User.delete")]
         [CacheRemoveAspect("get")]
-        public Result Delete(User user)
+        public IResult Delete(User user)
         {
             _userDal.Delete(user);
             return new SuccessResult(Messages.EntityDeleted);
         }
         [CacheAspect(5)]
-        public DataResult<List<User>> GetAll()
+        public IDataResult<List<User>> GetAll()
         {
             return new SuccessDataResult<List<User>>(_userDal.GetAll());
         }
         [CacheAspect(5)]
-        public DataResult<User> GetById(int id)
+        public IDataResult<User> GetById(int id)
         {
             return new SuccessDataResult<User>(_userDal.Get(u => u.UserId == id));
         }
-        [SecuredOperation("User.update")]
         [CacheRemoveAspect("get")]
         [ValidationAspect(typeof(UserValidator))]
-        public Result Update(User user)
+        public IResult Update(User user)
         {
             _userDal.Update(user);
             return new SuccessResult(Messages.EntityUpdated);

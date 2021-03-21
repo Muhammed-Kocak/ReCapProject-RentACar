@@ -15,8 +15,8 @@ namespace Business.ValidationRules.FluentValidation
             RuleFor(c => c.ModelYear).GreaterThan(0).WithMessage(Messages.IncorrectYearUse);
             RuleFor(c => c.DailyPrice).NotEmpty().WithMessage(Messages.NotEmpty);
             RuleFor(c => c.DailyPrice).GreaterThan(0).WithMessage(Messages.WrongPriceEntry);
-            RuleFor(c => c.CarDescription).NotEmpty().WithMessage(Messages.NotEmpty);
-            RuleFor(c => c.CarDescription).MinimumLength(5).WithMessage(Messages.MinimumLenght);
+            RuleFor(c => c.Description).NotEmpty().WithMessage(Messages.NotEmpty);
+            RuleFor(c => c.Description).MinimumLength(5).WithMessage(Messages.MinimumLenght);
         }
     }
 }

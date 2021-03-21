@@ -16,10 +16,10 @@ namespace DataAccess.Concrete.InMemory
         {
             _products = new List<Car>
             {
-                new Car{BrandId =1 , ColorId = 4, ModelYear = 1999 ,CarDescription = "Şahin Dosta Gider",DailyPrice = 40000},
-                new Car{BrandId =2 , ColorId = 1, ModelYear = 2019 ,CarDescription = "Şahin Dosta Gitmez",DailyPrice = 25000},
-                new Car{BrandId =2 , ColorId = 5, ModelYear = 2010 ,CarDescription = "Şahin Dosta Gidermiş Gibi Olan",DailyPrice = 12500},
-                new Car{BrandId =1 , ColorId = 7, ModelYear = 2013 ,CarDescription = "Şahin Hurda",DailyPrice = 5000}
+                new Car{BrandId =1 , ColorId = 4, ModelYear = 1999 ,Description = "Şahin Dosta Gider",DailyPrice = 40000},
+                new Car{BrandId =2 , ColorId = 1, ModelYear = 2019 ,Description = "Şahin Dosta Gitmez",DailyPrice = 25000},
+                new Car{BrandId =2 , ColorId = 5, ModelYear = 2010 ,Description = "Şahin Dosta Gidermiş Gibi Olan",DailyPrice = 12500},
+                new Car{BrandId =1 , ColorId = 7, ModelYear = 2013 ,Description = "Şahin Hurda",DailyPrice = 5000}
             };
         }
         public void Add(Car product)
@@ -53,6 +53,16 @@ namespace DataAccess.Concrete.InMemory
             return _products.Where(c => c.CarId == product.CarId).ToList();  
         }
 
+        public List<CarDetailDto> GetCarByBrand(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<CarDetailDto> GetCarByColor(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<CarDetailDto> GetCarDetails()
         {
             throw new NotImplementedException();
@@ -61,7 +71,7 @@ namespace DataAccess.Concrete.InMemory
         public void Update(Car product)
         {
             Car carRemove = _products.SingleOrDefault(c => c.CarId == product.CarId);
-            carRemove.CarDescription = product.CarDescription;
+            carRemove.Description = product.Description;
             carRemove.DailyPrice = product.DailyPrice;
             carRemove.ColorId = product.ColorId;
             carRemove.BrandId = product.BrandId;

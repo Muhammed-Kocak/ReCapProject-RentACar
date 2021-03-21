@@ -182,7 +182,7 @@ namespace ConsoleUI
 
             if (result2.Success)
             {
-                Console.WriteLine(result2.Data.CarDescription, result2.Data.ModelYear);
+                Console.WriteLine(result2.Data.Description, result2.Data.ModelYear);
             }
 
 
@@ -192,7 +192,7 @@ namespace ConsoleUI
 
             if (result3.Success)
             {
-                Console.WriteLine(result3.Data.CarDescription, result3.Data.ModelYear);
+                Console.WriteLine(result3.Data.Description, result3.Data.ModelYear);
             }
         }
 

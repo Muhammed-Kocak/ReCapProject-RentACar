@@ -14,7 +14,7 @@ using System.Text;
 
 namespace Business.Concrete
 {
-    [SecuredOperation("Admin,Moderator")]
+    //[SecuredOperation("Admin,Moderator")]
     public class BrandManager : IBrandService
     {
         IBrandDal _brandDal;

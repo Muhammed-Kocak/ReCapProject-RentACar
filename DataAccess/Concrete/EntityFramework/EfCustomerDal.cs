@@ -5,26 +5,28 @@ using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace DataAccess.Concrete.EntityFramework
 {
     public class EfCustomerDal : EfEntityRepositoryBase<Customer, RentACarContext>, ICustomerDal
     {
-        //public List<CustomerDetailDto> GetCustomerDetails()
-        //{
-        //    using (RentACarContext context = new RentACarContext())
-        //    {
-        //        var result = from c in context.Customers
-        //                     join u in context.Users
-        //                     on c.UserId equals u.UserId
-        //                     select new CustomerDetailDto
-        //                     { 
-        //                        c.CustomerId == c.CustomerId,
-        //                        c.CompanyName == c.CompanyName,
-        //                        c.UserName == u.UserName
-        //                     };
-        //        return result.ToList();
-        //    }
-        //}
+        public List<CustomerDetailDto> GetAllCustomerDetail()
+        {
+            using (RentACarContext context = new RentACarContext())
+            {
+                var result = from user in context.Users
+                             join customer in context.Customers
+                             on user.UserId equals customer.UserId
+                             select new CustomerDetailDto
+                             {
+                                 FirstName = user.FirstName,
+                                 LastName = user.LastName,
+                                 Email = user.Email,
+                                 CompanyName = customer.CompanyName
+                             };
+                return result.ToList();
+            }
+        }
     }
 }

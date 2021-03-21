@@ -1,7 +1,9 @@
 ﻿using Business.Abstract;
 using Business.BusinessAspect.Autofac;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
 using Core.Aspect.Autofac.Caching;
+using Core.Aspect.Autofac.Validation;
 using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
@@ -10,11 +12,12 @@ using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace Business.Concrete
 {
-    [SecuredOperation("Admin,Moderator")]
+    //[SecuredOperation("Admin,Moderator")]
     public class CarImageManager : ICarImageService
     {
         ICarImagesDal _carImageDal;
@@ -25,7 +28,7 @@ namespace Business.Concrete
             _carImageDal = carImagesDal;
             _carService = carService;
         }
-        [SecuredOperation("Car.add")]
+        //[SecuredOperation("Car.add")]
         [CacheRemoveAspect("get")]
         public IResult Add(CarImage entity)
         {
@@ -67,6 +70,20 @@ namespace Business.Concrete
             }
             return new SuccessDataResult<List<CarImage>>(getAllbyCarIdResult);
         }
+
+        [ValidationAspect(typeof(CarImageValidator))]
+        public IDataResult<List<CarImage>> GetImagesByCarId(int id)
+        {
+            IResult result = BusinessRules.Run(CheckIfCarImageNull(id));
+
+            if (result != null)
+            {
+                return new ErrorDataResult<List<CarImage>>(result.Message);
+            }
+
+            return new SuccessDataResult<List<CarImage>>(CheckIfCarImageNull(id).Data);
+        }
+
         [SecuredOperation("Car.update")]
         [CacheRemoveAspect("get")]
         public IResult Update(CarImage entity)
@@ -90,6 +107,27 @@ namespace Business.Concrete
                 return new ErrorDataResult<List<CarImage>>(Messages.GetErrorCarDetails);
             }
             return new SuccessDataResult<List<CarImage>>();
+        }
+
+        private IDataResult<List<CarImage>> CheckIfCarImageNull(int id)
+        {
+            try
+            {
+                var result = _carImageDal.GetAll(c => c.CarId == id).Any();
+                if (!result)
+                {
+                    List<CarImage> carimage = new List<CarImage>();
+                    carimage.Add(new CarImage { CarId = id, ImagePath = "NotImage.jpg", Date = DateTime.Now });
+                    return new SuccessDataResult<List<CarImage>>(carimage);
+                }
+            }
+            catch (Exception exception)
+            {
+
+                return new ErrorDataResult<List<CarImage>>(exception.Message);
+            }
+
+            return new SuccessDataResult<List<CarImage>>(_carImageDal.GetAll(p => p.CarId == id).ToList());
         }
     }
 }

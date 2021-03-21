@@ -15,7 +15,7 @@ using System.Text;
 
 namespace Business.Concrete
 {
-    [SecuredOperation("Admin,Moderator")]
+    //[SecuredOperation("Admin,Moderator")]
     public class CarManager : ICarService
     {
         ICarDal _carDal;
@@ -23,7 +23,7 @@ namespace Business.Concrete
         {
             _carDal = carDal;
         }
-        [SecuredOperation("Car.add")]
+        //[SecuredOperation("Car.add")]
         [CacheRemoveAspect("get")]
         [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car entity)
@@ -51,29 +51,22 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(), Messages.EntityListed);
         }
         [CacheAspect]
-        public IDataResult<Car> GetBrandId(int id)
-        {
-            return new SuccessDataResult<Car>(_carDal.Get(c => c.BrandId == id), Messages.EntityListed);
-        }
-        [CacheAspect]
         public IDataResult<Car> GetById(int id)
         {
             return new SuccessDataResult<Car>(_carDal.Get(c => c.CarId == id), Messages.EntityListed);
+        }
+        public IDataResult<List<CarDetailDto>> GetCarsByBrand(int id)
+        {
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarByBrand(id));
+        }
+        public IDataResult<List<CarDetailDto>> GetCarsByColor(int id)
+        {
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarByColor(id));
         }
         [CacheAspect]
         public IDataResult<List<CarDetailDto>> GetCarDetails()
         {
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(), Messages.EntityListed);
-        }
-        [CacheAspect]
-        IDataResult<List<Car>> ICarService.GetCarDetails()
-        {
-            throw new NotImplementedException();
-        }
-        [CacheAspect]
-        public IDataResult<Car> GetColorId(int id)
-        {
-            return new SuccessDataResult<Car>(_carDal.Get(c => c.ColorId == id), Messages.EntityListed);
         }
         [CacheAspect]
         public IDataResult<List<Car>> GetDailyPrice(decimal min, decimal max)
