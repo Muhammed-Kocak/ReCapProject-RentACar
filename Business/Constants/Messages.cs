@@ -1,4 +1,5 @@
 ﻿using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -67,6 +68,9 @@ namespace Business.Constants
         public static string AccessTokenCreated = "Access token başarıyla oluşturuldu";
 
         public static string AuthorizationDenied = "Yetkiniz yok";
+        internal static string GetSuccessCarMessage = "";
+
+        public static string GetErrorCarMessage = "";
         #endregion
     }
 }

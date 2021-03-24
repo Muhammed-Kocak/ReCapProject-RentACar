@@ -121,23 +121,23 @@ namespace ConsoleUI
             }
         }
 
-        private static void CarDetailTest()
-        {
-            CarManager carManager = new CarManager(new EfCarDal());
-            var result = carManager.GetCarDetails();
-            if (result.Success)
-            {
-                foreach (var car in result.Data)
-                {
-                    Console.WriteLine("--------------------");
-                    Console.WriteLine(@$"{car.CarId}'id sahibi olan araç {car.BrandName} markalı ve {car.ColorName} renge sahip. Şu anki satış fiyatı: {car.DailyPrice}");
-                }
-            }
+        //private static void CarDetailTest()
+        //{
+        //    CarManager carManager = new CarManager(new EfCarDal());
+        //    var result = carManager.GetCarsDetails();
+        //    if (result.Success)
+        //    {
+        //        foreach (var car in result.Data)
+        //        {
+        //            Console.WriteLine("--------------------");
+        //            Console.WriteLine(@$"{car.CarId}'id sahibi olan araç {car.BrandName} markalı ve {car.ColorName} renge sahip. Şu anki satış fiyatı: {car.DailyPrice}");
+        //        }
+        //    }
 
 
 
-            Console.WriteLine("--CAR DETAİL--");
-        }
+        //    Console.WriteLine("--CAR DETAİL--");
+        //}
 
         private static void ColorManagerTest()
         {
@@ -163,38 +163,38 @@ namespace ConsoleUI
 
             colorManager.Update(new Color { ColorId = 6, ColorName = "Mor" });
         }
-        private static void CarManagerTest()
-        {
-            CarManager carManager = new CarManager(new EfCarDal());
-            var result = carManager.GetAll();
-            if (result.Success)
-            {
-                foreach (var car in result.Data)
-                {
-                    Console.WriteLine(car.ModelYear);
-                }
-            }
-            Console.WriteLine("--CAR--");
+        //private static void CarManagerTest()
+        //{
+        //    CarManager carManager = new CarManager(new EfCarDal());
+        //    var result = carManager.GetAll();
+        //    if (result.Success)
+        //    {
+        //        foreach (var car in result.Data)
+        //        {
+        //            Console.WriteLine(car.ModelYear);
+        //        }
+        //    }
+        //    Console.WriteLine("--CAR--");
 
-            //carManager.Add(new Car { BrandId = 1, ColorId = 6, DailyPrice = 1000, ModelYear = 1990, CarDescription = "Dosta nasıl gider" });
+        //    //carManager.Add(new Car { BrandId = 1, ColorId = 6, DailyPrice = 1000, ModelYear = 1990, CarDescription = "Dosta nasıl gider" });
 
-            var result2 = carManager.GetById(2);
+        //    var result2 = carManager.GetById(2);
 
-            if (result2.Success)
-            {
-                Console.WriteLine(result2.Data.Description, result2.Data.ModelYear);
-            }
+        //    if (result2.Success)
+        //    {
+        //        Console.WriteLine(result2.Data.Description, result2.Data.ModelYear);
+        //    }
 
 
-            //carManager.Update(new Car { CarId = 5, DailyPrice = 2000, ColorId = 5, BrandId = 2, CarDescription = "Dosta asıl bu gider", ModelYear = 2010 });
+        //    //carManager.Update(new Car { CarId = 5, DailyPrice = 2000, ColorId = 5, BrandId = 2, CarDescription = "Dosta asıl bu gider", ModelYear = 2010 });
 
-            var result3 = carManager.GetById(2);
+        //    var result3 = carManager.GetById(2);
 
-            if (result3.Success)
-            {
-                Console.WriteLine(result3.Data.Description, result3.Data.ModelYear);
-            }
-        }
+        //    if (result3.Success)
+        //    {
+        //        Console.WriteLine(result3.Data.Description, result3.Data.ModelYear);
+        //    }
+        //}
 
         private static void BrandManagerTest()
         {

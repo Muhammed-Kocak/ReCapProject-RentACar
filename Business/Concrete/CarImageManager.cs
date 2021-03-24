@@ -1,10 +1,12 @@
-﻿using Business.Abstract;
+﻿using Autofac;
+using Business.Abstract;
 using Business.BusinessAspect.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspect.Autofac.Caching;
 using Core.Aspect.Autofac.Validation;
 using Core.Utilities.Business;
+using Core.Utilities.IoC;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -21,12 +23,10 @@ namespace Business.Concrete
     public class CarImageManager : ICarImageService
     {
         ICarImagesDal _carImageDal;
-        ICarService _carService;
 
-        public CarImageManager(ICarImagesDal carImagesDal, ICarService carService)
+        public CarImageManager(ICarImagesDal carImagesDal)
         {
             _carImageDal = carImagesDal;
-            _carService = carService;
         }
         //[SecuredOperation("Car.add")]
         [CacheRemoveAspect("get")]
@@ -102,7 +102,8 @@ namespace Business.Concrete
         }
         private IResult CheckIfCarId(int carId)
         {
-            if (!_carService.GetById(carId).Success)
+            var carService = ServiceTool.AutofacServiceProvider.Resolve<ICarService>();
+            if (!carService.GetById(carId).Success)
             {
                 return new ErrorDataResult<List<CarImage>>(Messages.GetErrorCarDetails);
             }

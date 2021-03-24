@@ -16,6 +16,7 @@ namespace Entities.DTOs
         public int ColorId { get; set; }
         public int DailyPrice { get; set; }
         public int ModelYear { get; set; }
+        public bool Status { get; set; }
 
     }
 }
