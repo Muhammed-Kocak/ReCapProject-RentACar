@@ -11,6 +11,7 @@ using Entities.Concrete;
 using Entities.DTOs;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Business.Concrete
@@ -84,10 +85,29 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarByColor(id));
         }
+
+        public IDataResult<CarDetailDto> GetCarsDetail(int carId)
+        {
+            return new SuccessDataResult<CarDetailDto>(_carDal.GetCarsDetail(c=>c.CarId==carId).FirstOrDefault());
+        }
+
+        public IDataResult<List<CarDetailDto>> GetCarsDetailByBrandIdAndColorId(int brandId, int colorId)
+        {
+            List<CarDetailDto> carDetails = _carDal.GetCarsDetail(p => p.BrandId == brandId && p.ColorId == colorId);
+            if (carDetails == null)
+            {
+                return new ErrorDataResult<List<CarDetailDto>>(Messages.GetErrorCarMessage);
+            }
+            else
+            {
+                return new SuccessDataResult<List<CarDetailDto>>(carDetails, Messages.GetErrorCarMessage);
+            }
+        }
+
         [CacheAspect]
         public IDataResult<List<CarDetailDto>> GetCarsDetails()
         {
-            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarsDetails(), Messages.EntityListed);
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarsDetail(), Messages.EntityListed);
         }
         [CacheAspect]
         public IDataResult<List<Car>> GetDailyPrice(decimal min, decimal max)

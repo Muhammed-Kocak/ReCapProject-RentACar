@@ -72,5 +72,20 @@ namespace Business.Constants
 
         public static string GetErrorCarMessage = "";
         #endregion
+        #region Rental
+        public static string AddRentalMessage = "Araç kiralama işlemi başarıyla eklendi.";
+
+        public static string DeleteRentalMessage = "Araç kiralama işlemi başarıyla silindi.";
+        public static string EditRentalMessage = "Araç kiralama işlemi başarıyla güncellendi.";
+        public static string GetSuccessRentalMessage = "Araç kiralama işlemi bilgisi / bilgileri getirildi.";
+        public static string GetErrorRentalMessage = "Araç kiralama işlemi bilgisi / bilgileri getirilemedi.";
+        public static string CarAvaible = "Araç kiralanmaya uygundur.";
+        public static string CarNotAvaible = "Araç kiralanmaya uygun değildir.";
+        public static string CarNotDeliverTheCar = "Araç teslim almaya uygun değildir.";
+        public static string CarDeliverTheCar = "Araç teslim alındı.";
+        public static string ErrorRentalFKMessage = "Müşteri ve araba alanlarını tekrar kontrol ediniz..";
+        public static string InsufficientBalance = "Yetersiz bakiye";
+        public static string PaymentCompleted = "Ödeme yapıldı";
+        #endregion
     }
 }
