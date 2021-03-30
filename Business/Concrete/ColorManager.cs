@@ -55,7 +55,7 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<Color>(_colorDal.Get(c => c.ColorId == id),Messages.EntityListed);
         }
-        [SecuredOperation("Color.update")]
+        //[SecuredOperation("Color.update")]
         [CacheRemoveAspect("get")]
         [ValidationAspect(typeof(ColorValidator))]
         public IResult Update(Color entity)

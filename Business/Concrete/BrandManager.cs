@@ -23,7 +23,7 @@ namespace Business.Concrete
         {
             _brandDal = brandDal;
         }
-        [SecuredOperation("Brand.Add")]
+        //[SecuredOperation("Brand.Add")]
         [ValidationAspect(typeof(BrandValidator))]
         [CacheRemoveAspect("get")]
         public IResult Add(Brand entity)
@@ -52,7 +52,7 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<Brand>(_brandDal.Get(b => b.BrandId == id),Messages.EntityListed);
         }
-        [SecuredOperation("Brand.update")]
+        //[SecuredOperation("Brand.update")]
         [CacheRemoveAspect("get")]
         [ValidationAspect(typeof(BrandValidator))]
         public IResult Update(Brand entity)
