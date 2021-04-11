@@ -91,35 +91,35 @@ namespace ConsoleUI
             }
         }
 
-        private static void UserManagerTest()
-        {
-            UserManager userManager = new UserManager(new EfUserDal());
-            userManager.Add(new User { FirstName = "Emre", LastName = "Altuğ", Email = "emre.altug@hotmail.com" });
-            userManager.Add(new User { FirstName = "Gülhan", LastName = "Altundaşar", Email = "gülhan.altundaşar26@hotmail.com" });
-            userManager.Add(new User { FirstName = "Menekşe", LastName = "Çiçek", Email = "menekse.cicek@hotmail.com  }" });
-            userManager.Add(new User { FirstName = "Aşkın", LastName = "Sever", Email = "askin.sever@hotmail.com" });
+        //private static void UserManagerTest()
+        //{
+        //    UserManager userManager = new UserManager(new EfUserDal());
+        //    userManager.Add(new User { FirstName = "Emre", LastName = "Altuğ", Email = "emre.altug@hotmail.com" });
+        //    userManager.Add(new User { FirstName = "Gülhan", LastName = "Altundaşar", Email = "gülhan.altundaşar26@hotmail.com" });
+        //    userManager.Add(new User { FirstName = "Menekşe", LastName = "Çiçek", Email = "menekse.cicek@hotmail.com  }" });
+        //    userManager.Add(new User { FirstName = "Aşkın", LastName = "Sever", Email = "askin.sever@hotmail.com" });
 
-            var result = userManager.GetAll();
-            if (result.Success)
-            {
-                foreach (var user in result.Data)
-                {
-                    Console.WriteLine($@"{user.FirstName} \ {user.LastName} \ {user.Email}");
-                }
-            }
+        //    var result = userManager.GetAll();
+        //    if (result.Success)
+        //    {
+        //        foreach (var user in result.Data)
+        //        {
+        //            Console.WriteLine($@"{user.FirstName} \ {user.LastName} \ {user.Email}");
+        //        }
+        //    }
 
-            userManager.Delete(new User { UserId = 11 });
-            userManager.Delete(new User { UserId = 12 });
+        //    userManager.Delete(new User { UserId = 11 });
+        //    userManager.Delete(new User { UserId = 12 });
 
-            var result2 = userManager.GetAll();
-            if (result2.Success)
-            {
-                foreach (var user in result2.Data)
-                {
-                    Console.WriteLine($@"{user.FirstName} \ {user.LastName} \ {user.Email}");
-                }
-            }
-        }
+        //    var result2 = userManager.GetAll();
+        //    if (result2.Success)
+        //    {
+        //        foreach (var user in result2.Data)
+        //        {
+        //            Console.WriteLine($@"{user.FirstName} \ {user.LastName} \ {user.Email}");
+        //        }
+        //    }
+        //}
 
         //private static void CarDetailTest()
         //{

@@ -33,10 +33,10 @@ namespace WebAPI.Controllers
             var result = _authService.CreateAccessToken(userToLogin.Data);
             if (result.Success)
             {
-                return Ok(result.Data);
+                return Ok(result);
             }
 
-            return BadRequest(result.Message);
+            return BadRequest(result);
         }
 
         [HttpPost("register")]
@@ -52,10 +52,22 @@ namespace WebAPI.Controllers
             var result = _authService.CreateAccessToken(registerResult.Data);
             if (result.Success)
             {
-                return Ok(result.Data);
+                return Ok(result);
             }
 
-            return BadRequest(result.Message);
+            return BadRequest(result);
+        }
+        [HttpGet("isauthenticated")]
+        public ActionResult IsAuthenticated(string userMail, string requiredRoles)
+        {
+            var requiredRolesList = !string.IsNullOrEmpty(requiredRoles)
+                ? requiredRoles.Split(',').ToList()
+                : null;
+
+            var result = _authService.IsAuthenticated(userMail, requiredRolesList);
+            if (result.Success) return Ok(result);
+
+            return Unauthorized(result.Message);
         }
     }
 }

@@ -18,7 +18,6 @@ using System.Text;
 namespace Business.Concrete
 {
 
-    //[SecuredOperation("Admin,Moderator")]
     public class ColorManager : IColorService
     {
         IColorDal _colorDal;
@@ -27,7 +26,7 @@ namespace Business.Concrete
             _colorDal = colorDal;
         }
         [LogAspect(typeof(FileLogger))]
-        //[SecuredOperation("Color.add")]
+        [SecuredOperation("admin,color.add")]
         [ValidationAspect(typeof(ColorValidator))]
         [CacheRemoveAspect("get")]
         public IResult Add(Color entity)
@@ -36,7 +35,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.EntityAdded);
         }
         [LogAspect(typeof(DatabaseLogger))]
-        //[SecuredOperation("Color.delete")]
+        [SecuredOperation("admin,color.delete")]
         [CacheRemoveAspect("get")]
         public IResult Delete(Color entity)
         {
@@ -55,7 +54,7 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<Color>(_colorDal.Get(c => c.ColorId == id),Messages.EntityListed);
         }
-        //[SecuredOperation("Color.update")]
+        [SecuredOperation("Color.update")]
         [CacheRemoveAspect("get")]
         [ValidationAspect(typeof(ColorValidator))]
         public IResult Update(Color entity)

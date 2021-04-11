@@ -48,6 +48,7 @@ namespace WebAPI.Controllers
         [HttpPost("add")]
         public IActionResult Add([FromForm] IFormFile imageFile, [FromForm] CarImage entity)
         {
+            entity.Date = DateTime.Now;
             entity.ImagePath = Guid.NewGuid() + Path.GetExtension(imageFile.FileName);
             var result = _carImageService.Add(entity);
             if (result.Success)

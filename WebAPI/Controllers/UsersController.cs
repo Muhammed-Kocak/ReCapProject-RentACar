@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Core.Entities.Concrete;
 using Entities.Concrete;
+using Entities.DTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -40,6 +41,14 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
+        [HttpGet("getuserdetailbymail")]
+        public IActionResult GetUserDetailByMail(string userMail)
+        {
+            var result = _userService.GetUserDetailByMail(userMail);
+            if (result.Success) return Ok(result);
+
+            return BadRequest(result);
+        }
         [HttpPost("add")]
         public IActionResult Add(User user)
         {
@@ -58,6 +67,14 @@ namespace WebAPI.Controllers
             {
                 return Ok(result);
             }
+            return BadRequest(result);
+        }
+        [HttpPost("updateuserdetails")]
+        public IActionResult UpdateUserDetails(UserDetailForUpdateDto userDetailForUpdate)
+        {
+            var result = _userService.UpdateUserDetails(userDetailForUpdate);
+            if (result.Success) return Ok(result);
+
             return BadRequest(result);
         }
         [HttpPost("delete")]

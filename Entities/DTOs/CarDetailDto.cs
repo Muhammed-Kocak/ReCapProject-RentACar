@@ -17,6 +17,7 @@ namespace Entities.DTOs
         public string Description { get; set; }
         public int ModelYear { get; set; }
         public bool Status { get; set; }
+        public short? MinFindeksScore { get; set; }
 
     }
 }

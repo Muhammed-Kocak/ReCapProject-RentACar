@@ -65,6 +65,7 @@ namespace Business.Constants
         public static string SuccessfulLogin = "Sisteme giriş başarılı";
         public static string UserAlreadyExists = "Bu kullanıcı zaten mevcut";
         public static string UserRegistered = "Kullanıcı başarıyla kaydedildi";
+        public static string UserDetailsUpdated = "Kullanıcı detayları güncellendi.";
         public static string AccessTokenCreated = "Access token başarıyla oluşturuldu";
 
         public static string AuthorizationDenied = "Yetkiniz yok";
@@ -86,6 +87,26 @@ namespace Business.Constants
         public static string ErrorRentalFKMessage = "Müşteri ve araba alanlarını tekrar kontrol ediniz..";
         public static string InsufficientBalance = "Yetersiz bakiye";
         public static string PaymentCompleted = "Ödeme yapıldı";
+        #endregion
+        #region Findeks
+        public static string FindeksAdded = "Findeks puanı eklendi";
+        public static string FindeksUpdated = "Findeks puanı güncellendi";
+        public static string FindeksDeleted = "Findeks puanı silindi";
+        public static string FindeksNotEnoughForCar = "Findeks puanınız aracı kiralamak için yeterli değil";
+        public static string FindeksNotFound = "Findeks puanınızı eklemelisiniz.";
+        #endregion
+        #region CreditCard
+        public static readonly string creditCardAdded = "Kredi kartı eklendi.";
+        public static readonly string creditCardDeleted = "Kredi kartı silindi.";
+        #endregion
+        #region UserAndOperationClaim 
+        public static string UserOperationClaimAdded = "Kullanıcıya yetki eklendi.";
+        public static string UserOperationClaimUpdated = "Kullanıcının yetkisi güncellendi";
+        public static string UserOperationClaimDeleted = "Kullanıcının yetkisi silindi";
+
+        public static string OperationClaimAdded = "Yeni yetki eklendi.";
+        public static string OperationClaimUpdated = "Yetki güncellendi";
+        public static string OperationClaimDeleted = "Yetki silindi.";
         #endregion
     }
 }

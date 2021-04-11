@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using Entities.DTOs;
 
 namespace DataAccess.Concrete.EntityFramework
 {
@@ -21,6 +22,28 @@ namespace DataAccess.Concrete.EntityFramework
                              select new OperationClaim { OperationClaimId = operationClaim.OperationClaimId, Name = operationClaim.Name };
                 return result.ToList();
 
+            }
+        }
+
+        public UserDetailDto GetUserDetail(string userMail)
+        {
+            using (var context = new RentACarContext())
+            {
+                var result =
+                    (from u in context.Users
+                     join c in context.Customers
+                         on u.UserId equals c.UserId
+                     where u.Email == userMail
+                     select new UserDetailDto
+                     {
+                         UserDetailDtoId = u.UserId,
+                         CustomerId = c.CustomerId,
+                         FirstName = u.FirstName,
+                         LastName = u.LastName,
+                         Email = u.Email,
+                         CompanyName = c.CompanyName
+                     }).First();
+                return result;
             }
         }
     }

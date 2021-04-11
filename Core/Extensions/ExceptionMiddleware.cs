@@ -1,10 +1,10 @@
-﻿using FluentValidation;
-using Microsoft.AspNetCore.Http;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using FluentValidation;
+using Microsoft.AspNetCore.Http;
 
 namespace Core.Extensions
 {

@@ -78,7 +78,8 @@ namespace DataAccess.Concrete.EntityFramework
                                  Status = context.Rentals.Any(p => p.CarId == p.CarId && p.ReturnDate == null),
                                  ModelYear = p.ModelYear,
                                  BrandId = d.BrandId,
-                                 ColorId = c.ColorId
+                                 ColorId = c.ColorId,
+                                 MinFindeksScore = p.MinFindeksScore
                              };
 
                 return result.SingleOrDefault();
@@ -103,7 +104,8 @@ namespace DataAccess.Concrete.EntityFramework
                                  Status = !context.Rentals.Any(r => r.CarId == p.CarId) || !context.Rentals.Any(r => r.CarId == p.CarId && (r.ReturnDate == null || (r.ReturnDate.HasValue && r.ReturnDate > DateTime.Now))),
                                  ModelYear = p.ModelYear,
                                  BrandId = d.BrandId,
-                                 ColorId = c.ColorId
+                                 ColorId = c.ColorId,
+                                 MinFindeksScore = p.MinFindeksScore
                              };
                 return result.ToList();
             }

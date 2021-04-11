@@ -16,7 +16,6 @@ using System.Text;
 
 namespace Business.Concrete
 {
-    //[SecuredOperation("Admin,Moderator")]
     public class CarManager : ICarService
     {
         ICarDal _carDal;
@@ -119,7 +118,7 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => minyear <= c.ModelYear && c.ModelYear <= maxyear), Messages.EntityListed);
         }
-        //[SecuredOperation("Car.update")]
+        [SecuredOperation("Car.update")]
         [ValidationAspect(typeof(CarValidator))]
         [CacheRemoveAspect("get")]
         public IResult Update(Car entity)

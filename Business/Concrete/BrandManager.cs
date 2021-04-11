@@ -23,7 +23,7 @@ namespace Business.Concrete
         {
             _brandDal = brandDal;
         }
-        //[SecuredOperation("Brand.Add")]
+        [SecuredOperation("admin")]
         [ValidationAspect(typeof(BrandValidator))]
         [CacheRemoveAspect("get")]
         public IResult Add(Brand entity)
@@ -35,7 +35,7 @@ namespace Business.Concrete
             _brandDal.Add(entity);
             return new SuccessResult(Messages.EntityAdded);
         }
-        [SecuredOperation("Brand.delete")]
+        [SecuredOperation("admin,brand.delete")]
         [CacheRemoveAspect("get")]
         public IResult Delete(Brand entity)
         {
