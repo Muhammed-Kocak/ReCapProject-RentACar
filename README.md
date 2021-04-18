@@ -1,4 +1,4 @@
-# Rent A Car Project * Araç Kiralama Projesi
+# Rent A Car Project
 
 <p align="start">
     Car Rental project with N-Layer Architecture.
