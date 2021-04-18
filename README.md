@@ -11,7 +11,7 @@
 
 
 <details>
-  ## <summary>Specifications</summary>
+ <summary>Specifications</summary>
   
   + Car Operations
     + Get all cars
@@ -20,7 +20,7 @@
     + Edit a car
     + Delete a car
   
-   + Car Image Operations
+  + Car Image Operations
     + Get a car image
     + Get all image
     + Add (Upload) a New Car Image
@@ -129,7 +129,7 @@
   + Calculate findeks score (Fake)
 
 <details>
-  ## <summary>Layers</summary>
+  <summary>Layers</summary>
 
 ## Business
  > Business Layer created to process or control the incoming information according to the required conditions.
@@ -150,6 +150,23 @@
 ## WebAPI
  > Web API Layer that opens the business layer to the internet.
 
+</details>
+
+<details>
+  <summary>Models</summary>
+  
+### Car
+
+| Name  | Data Type | Allow Nulls | Default |
+| ------------- | ------------- | ------------- | ------------- |
+| CarId  | Int  | False  |   |
+| BrandId  | int  | False  |   |
+| ColorId  | int  | False  |   |
+| ModelYear  | int  | False  |   |
+| DailyPrice  | int  | False  |   |
+| Description  | nvarchar(MAX)  | False  |   |
+| MinFindeksScore  | smallint  | True  | ((0))  |
+  
 </details>
 
 ## Finally..
