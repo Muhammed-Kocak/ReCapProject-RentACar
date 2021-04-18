@@ -80,8 +80,9 @@
     + Delete a user
     
 </details>
-
-## Authentication
+<details>
+ <summary>Authentication</summary>
+ 
 ### Requests are authenticated using the Authorization header and value Bearer {{token}}. with a valid JWT.
 
 + Authentication Strategy : JWT
@@ -128,6 +129,7 @@
   + Searching findeks by customer
   + Calculate findeks score (Fake)
 
+</details>
 <details>
   <summary>Layers</summary>
 
@@ -155,7 +157,7 @@
 <details>
   <summary>Models</summary>
   
-### Car
+### Cars
 
 | Name  | Data Type | Allow Nulls | Default |
 | ------------- | ------------- | ------------- | ------------- |
@@ -166,7 +168,105 @@
 | DailyPrice  | int  | False  |   |
 | Description  | nvarchar(MAX)  | False  |   |
 | MinFindeksScore  | smallint  | True  | ((0))  |
+
+### Brands
+
+| Name  | Data Type | Allow Nulls | Default |
+| ------------- | ------------- | ------------- | ------------- |
+| BrandId  | int  | False  |   |
+| BrandName  | nvarchar(MAX)  | False  |   |
+
+### Colors
+
+| Name  | Data Type | Allow Nulls | Default |
+| ------------- | ------------- | ------------- | ------------- |
+| ColorId  | int  | False  |   |
+| ColorName  | nvarchar(MAX)  | False  |   |
+
+### Car Images
+
+| Name  | Data Type | Allow Nulls | Default |
+| ------------- | ------------- | ------------- | ------------- |
+| CarImageId  | int  | False  |   |
+| CarId  | int  | False  |   |
+| ImagePath  | nvarchar(MAX)  | False  |   |
+| Date  | datetime  | False  |   |
+
+### Credit Cards
+
+| Name  | Data Type | Allow Nulls | Default |
+| ------------- | ------------- | ------------- | ------------- |
+| CreditsCardsId  | int  | False  |   |
+| CustomerId  | int  | False  |   |
+| NameSurname  | nvarchar(100)  | False  |   |
+| CardNumber  | nvarchar(25)  | False  |   |
+| ExpMonth  | tinyint  | False  |   |
+| ExpYear  | tinyint  | False  |   |
+| Cvc  | nvarchar(3)  | False  |   |
+| CardType  | nvarchar(20)  | False  |   |
+
+### Customers
+
+| Name  | Data Type | Allow Nulls | Default |
+| ------------- | ------------- | ------------- | ------------- |
+| CustomerId  | int  | False  |   |
+| UserId  | int  | False  |   |
+| CompanyName  | nvarchar(MAX)  | False  |   |
+
+### Findeks
+
+| Name  | Data Type | Allow Nulls | Default |
+| ------------- | ------------- | ------------- | ------------- |
+| FindeksId  | int  | False  |   |
+| CustomerId  | int  | False  |   |
+| [NationalIdentity]  | nvarchar(50)  | False  |   |
+| Score  | smallint  | False  |   |
+
+### Operation Claims
+
+| Name  | Data Type | Allow Nulls | Default |
+| ------------- | ------------- | ------------- | ------------- |
+| OperationClaimId  | int  | False  |   |
+| Name  | nvarchar(MAX)  | False  |   |
+
+### User Operation Claims
+
+| Name  | Data Type | Allow Nulls | Default |
+| ------------- | ------------- | ------------- | ------------- |
+| UserOperationClaimId  | int  | False  |   |
+| UserId  | int  | False  |   |
+| OperationClaimId  | int  | False  |   |
   
+### Users
+
+| Name  | Data Type | Allow Nulls | Default |
+| ------------- | ------------- | ------------- | ------------- |
+| UserId  | int  | False  |   |
+| FirstName  | nvarchar(MAX)  | False  |   |
+| LastName  | nvarchar(MAX)  | False  |   |
+| Email  | nvarchar(MAX)  | False  |   |
+| PasswordSalt  | varbinary(MAX)  | False  |   |
+| PasswordHash  | varbinary(MAX)  | False  |   |
+| Status  | bit  | False  |   |
+
+### Payments
+
+| Name  | Data Type | Allow Nulls | Default |
+| ------------- | ------------- | ------------- | ------------- |
+| PaymentId  | int  | False  |   |
+| Amount  | money  | False  |   |
+
+### Rentals
+
+| Name  | Data Type | Allow Nulls | Default |
+| ------------- | ------------- | ------------- | ------------- |
+| RentalId  | int  | False  |   |
+| CarId  | int  | False  |   |
+| CustomerId  | int  | False  |   |
+| RentDate  | date  | False  |   |
+| RentDate  | date  | True  |   |
+
+
 </details>
 
 ## Finally..
@@ -182,6 +282,12 @@
 > Written 'MiddlewareExceptionExtension' for 'Exception'.
 
 
+## Contact
+
+>  [Muhammed Koçak Linkedin](https://www.linkedin.com/in/muhammed-koçak-387960208/) 
+>  [For other projects on GitHub](https://github.com/Muhammed-Kocak) 
+>  [Muhammed Koçak İnstagram](https://www.instagram.com/sky._.cry/) 
+>  [Muhammed Koçak Facebook](https://www.facebook.com/muhammed.kocak1) 
 
 <p><a href="https://github.com/Muhammed-Kocak/recap-frontend/graphs/contributors"><img src="https://camo.githubusercontent.com/cdfc5f2c10e5cea0a9410ec0a43614e421c9e9446f5653dfa6b8516b82b92d71/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f636f6e7472696275746f72732f61686d65742d636574696e6b6179612f526543617050726f6a6563742d46726f6e74656e642e7376673f7374796c653d666f722d7468652d6261646765" alt="Contributors" data-canonical-src="https://img.shields.io/github/contributors/ahmet-cetinkaya/ReCapProject-Frontend.svg?style=for-the-badge" style="max-width:100%;">
 </a>
