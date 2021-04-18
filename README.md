@@ -1,5 +1,14 @@
 # Rent A Car Project * Araç Kiralama Projesi
 
+<p align="start">
+    Car Rental project with N-Layer Architecture.
+    <br>
+    <br>
+    <a href="https://github.com/Muhammed-Kocak/recap-frontend/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/Muhammed-Kocak/recap-frontend/issues">Request Feature</a>
+</p>
+
 ## Build With
 
 <p><a href="https://docs.microsoft.com/en-us/dotnet/csharp/" rel="nofollow"><img src="https://camo.githubusercontent.com/dd433625a6e00049c26f08143705ff9e32d5da44f503f1be133664b11e37e34b/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f432532332d3233393132303f7374796c653d666f722d7468652d6261646765266c6f676f3d632d7368617270266c6f676f436f6c6f723d7768697465" alt="C-Sharp" data-canonical-src="https://img.shields.io/badge/C%23-239120?style=for-the-badge&amp;logo=c-sharp&amp;logoColor=white" style="max-width:100%;"></a>
@@ -269,7 +278,9 @@
 
 </details>
 
-## Finally..
+
+<details>
+ <summary>Finaly..</summary>
 
 > It is a cross platform project.
 
@@ -281,13 +292,20 @@
 
 > Written 'MiddlewareExceptionExtension' for 'Exception'.
 
+> I'm constantly adding new extensions to my project, stay tuned!
+
+</details>
 
 ## Contact
 
 >  [Muhammed Koçak Linkedin](https://www.linkedin.com/in/muhammed-koçak-387960208/) 
+
 >  [For other projects on GitHub](https://github.com/Muhammed-Kocak) 
+
 >  [Muhammed Koçak İnstagram](https://www.instagram.com/sky._.cry/) 
+
 >  [Muhammed Koçak Facebook](https://www.facebook.com/muhammed.kocak1) 
+
 
 <p><a href="https://github.com/Muhammed-Kocak/recap-frontend/graphs/contributors"><img src="https://camo.githubusercontent.com/cdfc5f2c10e5cea0a9410ec0a43614e421c9e9446f5653dfa6b8516b82b92d71/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f636f6e7472696275746f72732f61686d65742d636574696e6b6179612f526543617050726f6a6563742d46726f6e74656e642e7376673f7374796c653d666f722d7468652d6261646765" alt="Contributors" data-canonical-src="https://img.shields.io/github/contributors/ahmet-cetinkaya/ReCapProject-Frontend.svg?style=for-the-badge" style="max-width:100%;">
 </a>
@@ -296,20 +314,6 @@
 <a href="https://www.linkedin.com/in/muhammed-koçak-387960208/" rel="nofollow"><img src="https://camo.githubusercontent.com/a80d00f23720d0bc9f55481cfcd77ab79e141606829cf16ec43f8cacc7741e46/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c696e6b6564496e2d3030373742353f7374796c653d666f722d7468652d6261646765266c6f676f3d6c696e6b6564696e266c6f676f436f6c6f723d7768697465" alt="LinkedIn" data-canonical-src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&amp;logo=linkedin&amp;logoColor=white" style="max-width:100%;">
 </a></p>
 
-<p align="start">
-    Frontend of <a href="https://github.com/Muhammed-Kocak/ReCapProject-RentACar">ReCapProject</a> with Angular.
-    <br>
-    <br>
-    <a href="https://github.com/Muhammed-Kocak/recap-frontend/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/Muhammed-Kocak/recap-frontend/issues">Request Feature</a>
-</p>
 
-
-
-
-
-Don't forget to mention my mistakes and give stars if you like it :)
----------------------------
-Hatalarımdan bahsetmeyi ve beğenirsen yıldız vermeyi unutma :)
+### Don't forget to mention my mistakes and give stars if you like it :)
 
